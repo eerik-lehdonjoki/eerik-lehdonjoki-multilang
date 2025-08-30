@@ -56,8 +56,8 @@ Displays the 3 oldest users:
 python main.py top
 ```
 
-#### Demo Control Flow
-Demonstrates while loops and match-case statements:
+#### Show Users by Region
+Groups users by geographical regions using match-case statements:
 ```powershell
-python main.py demo
+python main.py region
 ```
