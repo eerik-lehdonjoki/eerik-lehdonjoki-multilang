@@ -5,7 +5,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CSV_PATH = ROOT / "users.csv"
-OUT_PATH = ROOT / "output" / "filtered_python.csv"
 
 def load_users(path):
     try:
