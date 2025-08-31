@@ -1,63 +1,29 @@
-## Prerequisites
+## Python Version
 
-- **Python 3.10 or higher** (required for match-case statements)
+Python implementation mirroring the Node.js script in `../javascript/main.js`.
 
-### Check Python Installation
+### Prerequisites
+- Python 3.10+ (match-case used)
 
-Open command line and run:
+Check version:
 ```powershell
 python --version
 ```
 
-If Python is not installed, download it from [python.org](https://www.python.org/downloads/) and make sure to check "Add Python to PATH" during installation.
-
-## How to Run
-
-### 1. Navigate to the Python Directory
-
-Open command line in root folder and navigate to the python directory:
+### How to Run
+From repository root or within this `python` folder:
 ```powershell
 cd python
+python main.py            # summary (default)
+python main.py summary    # same as above
+python main.py filter     # users aged >= 30 count
+python main.py group      # users per country
+python main.py avg        # average age
+python main.py top        # top 3 oldest users
+python main.py region     # users per region (continent groups)
 ```
 
-### 2. Run Different Operations
-
-The script supports several operations
-
-#### Summary (Default Operation)
-Shows total users, filtered users (age >= 30), users per country, average age, and top 3 oldest users:
-```powershell
-python main.py
-# or explicitly:
-python main.py summary
-```
-
-#### Filter Users by Age
-Shows count of users aged 30 and above:
-```powershell
-python main.py filter
-```
-
-#### Group Users by Country
-Shows user count per country:
-```powershell
-python main.py group
-```
-
-#### Calculate Average Age
-Shows the average age of all users:
-```powershell
-python main.py avg
-```
-
-#### Show Top 3 Oldest Users
-Displays the 3 oldest users:
-```powershell
-python main.py top
-```
-
-#### Show Users by Region
-Groups users by geographical regions using match-case statements:
-```powershell
-python main.py region
-```
+### Notes
+- Reads shared `../users.csv` in repo root.
+- Standard library only (no external deps).
+- Region command uses simple continent mapping via match-case.
