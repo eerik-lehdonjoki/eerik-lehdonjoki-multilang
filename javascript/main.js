@@ -29,7 +29,14 @@ function loadUsers(csvPath) {
 }
 
 function filterUsersByMinimumAge(users, threshold = 30) {
-  return users.filter(user => parseInt(u.age, 10) >= threshold);
+  const result = [];
+  users.forEach(user => {
+    const age = parseInt(user.age, 10);
+    if (!isNaN(age) && age >= threshold) {
+      result.push(user);
+    }
+  });
+  return result;
 }
 
 function countUsersByCountry(users) {
