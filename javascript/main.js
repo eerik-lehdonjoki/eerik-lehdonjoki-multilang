@@ -40,10 +40,12 @@ function filterUsersByMinimumAge(users, threshold = 30) {
 }
 
 function countUsersByCountry(users) {
-  return users.reduce((acc, user) => {
-    acc[user.country] = (acc[user.country] || 0) + 1;
-    return acc;
-  }, {});
+  const counts = {};
+  users.forEach(user => {
+    const country = user.country;
+    counts[country] = (counts[country] || 0) + 1;
+  });
+  return counts;
 }
 
 function calculateUsersAverageAge(users) {
