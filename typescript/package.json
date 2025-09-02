@@ -1,0 +1,22 @@
+{
+  "name": "typescript-users-example",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TypeScript script operating on users.csv",
+  "scripts": {
+    "build": "tsc -p .",
+    "start": "node dist/main.js summary",
+    "run": "ts-node main.ts",
+    "summary": "ts-node main.ts summary",
+    "filter": "ts-node main.ts filter",
+    "group": "ts-node main.ts group",
+    "avg": "ts-node main.ts avg",
+    "top": "ts-node main.ts top",
+    "region": "ts-node main.ts region"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.0"
+  }
+}
