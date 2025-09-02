@@ -47,7 +47,16 @@ function calculateUsersAverageAge(users) {
 }
 
 function getTopNOldestUsers(users, n = 3) {
-  return [...users].sort((a, b) => parseInt(b.age, 10) - parseInt(a.age, 10)).slice(0, n);
+  // Avoid original array mutation.
+  const copy = users.slice();
+
+  copy.sort((a, b) => {
+    const ageA = parseInt(a.age, 10) || 0;
+    const ageB = parseInt(b.age, 10) || 0;
+    return ageB - ageA;
+  });
+
+  return copy.slice(0, n);
 }
 
 function getRegionForCountry(country) {
