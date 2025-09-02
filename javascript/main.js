@@ -50,9 +50,22 @@ function countUsersByCountry(users) {
 
 function calculateUsersAverageAge(users) {
   if (!users.length) return 0.0;
-  const ages = users.map(u => parseInt(u.age, 10));
-  const avg = ages.reduce((a, b) => a + b, 0) / ages.length;
-  return Math.round(avg * 10) / 10; // 1 decimal
+
+  let sum = 0;
+  let count = 0;
+
+  users.forEach(u => {
+    const age = parseInt(u.age, 10);
+    if (!isNaN(age)) {
+      sum += age;
+      count += 1;
+    }
+  });
+
+  if (!count) return 0.0;
+  const avg = sum / count;
+
+  return Math.round(avg * 10) / 10;
 }
 
 function getTopNOldestUsers(users, n = 3) {
