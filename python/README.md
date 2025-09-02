@@ -1,7 +1,5 @@
 ## Python Version
 
-Python implementation mirroring the Node.js script in `../javascript/main.js`.
-
 ### Prerequisites
 - Python 3.10+ (match-case used)
 
