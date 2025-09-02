@@ -4,6 +4,11 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const CSV_PATH = path.join(ROOT, 'users.csv');
 
+/**
+ * Example: [ { name: 'Alice', age: '34', country: 'Finland' }, { name: 'Bob', age: '27', country: 'USA' } ]
+ * Note: All values are strings
+ * Type: Array<Record<string,string>>
+ */
 function loadUsers(csvPath) {
   try {
     const raw = fs.readFileSync(csvPath, 'utf-8');
@@ -74,9 +79,7 @@ function usersByRegion(users) {
     return acc;
   }, {});
   console.log('Users per region:');
-  Object.entries(regionCounts).forEach(([r, n]) => {
-    console.log(`  ${r}: ${n}`);
-  });
+  logKeyValueLines(regionCounts);
 }
 
 function doSummary(users) {
@@ -89,10 +92,16 @@ function doSummary(users) {
   console.log(`Total users: ${total}`);
   console.log(`Filtered count: ${filtered.length}`);
   console.log('Users per country:');
-  Object.entries(grouped).forEach(([c, n]) => console.log(`  ${c}: ${n}`));
+  logKeyValueLines(grouped);
   console.log(`Average age: ${avgAge}`);
   console.log('Top 3 oldest users:');
   oldest.forEach(u => console.log(`  ${u.name} (${u.age})`));
+}
+
+function logKeyValueLines(obj) {
+  Object.entries(obj).forEach(([key, value]) => {
+    console.log(`  ${key}: ${value}`);
+  });
 }
 
 function main() {
@@ -113,7 +122,8 @@ function main() {
 
   if (operation === 'group') {
     console.log('Users per country:');
-    Object.entries(countUsersByCountry(users)).forEach(([c, n]) => console.log(`  ${c}: ${n}`));
+    const byCountry = countUsersByCountry(users);
+    logKeyValueLines(byCountry);
     return;
   }
 
