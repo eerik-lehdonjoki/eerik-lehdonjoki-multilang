@@ -73,11 +73,11 @@ function getRegionForCountry(country) {
 }
 
 function usersByRegion(users) {
-  const regionCounts = users.reduce((acc, u) => {
-    const r = getRegionForCountry(u.country);
-    acc[r] = (acc[r] || 0) + 1;
-    return acc;
-  }, {});
+  const regionCounts = {};
+  users.forEach(u => {
+    const region = getRegionForCountry(u.country);
+    regionCounts[region] = (regionCounts[region] || 0) + 1;
+  });
   console.log('Users per region:');
   logKeyValueLines(regionCounts);
 }
