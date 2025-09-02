@@ -101,16 +101,36 @@ function main() {
 
   const operation = process.argv[2] || 'summary';
 
-  if (operation === 'summary') return void doSummary(users);
-  if (operation === 'filter') return void console.log(`Filtered count: ${filterUsersByMinimumAge(users).length}`);
+  if (operation === 'summary') {
+    doSummary(users);
+    return;
+  }
+
+  if (operation === 'filter') {
+    console.log(`Filtered count: ${filterUsersByMinimumAge(users).length}`);
+    return;
+  }
+
   if (operation === 'group') {
     console.log('Users per country:');
     Object.entries(countUsersByCountry(users)).forEach(([c, n]) => console.log(`  ${c}: ${n}`));
     return;
   }
-  if (operation === 'avg') return void console.log(`Average age: ${calculateUsersAverageAge(users)}`);
-  if (operation === 'top') return void getTopNOldestUsers(users).forEach(u => console.log(`${u.name} (${u.age})`));
-  if (operation === 'region') return void usersByRegion(users);
+
+  if (operation === 'avg') {
+    console.log(`Average age: ${calculateUsersAverageAge(users)}`);
+    return;
+  }
+
+  if (operation === 'top') {
+    getTopNOldestUsers(users).forEach(u => console.log(`${u.name} (${u.age})`));
+    return;
+  }
+
+  if (operation === 'region') {
+    usersByRegion(users);
+    return;
+  }
 
   console.log(`Unknown operation '${operation}'. Use summary|filter|group|avg|top|region.`);
 }
