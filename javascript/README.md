@@ -1,7 +1,5 @@
 ## JavaScript Version
 
-Node.js implementation mirroring the Python script in `../python/main.py`.
-
 ### Prerequisites
 - Node.js 18+ (for up-to-date runtime; no special APIs used)
 
