@@ -29,7 +29,7 @@ function loadUsers(csvPath) {
 }
 
 function filterUsersByMinimumAge(users, threshold = 30) {
-  return users.filter(u => parseInt(u.age, 10) >= threshold);
+  return users.filter(user => parseInt(u.age, 10) >= threshold);
 }
 
 function countUsersByCountry(users) {
