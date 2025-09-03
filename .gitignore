@@ -56,3 +56,18 @@ Thumbs.db
 
 # Generated CSV backups
 users-*.csv
+
+# Scala / sbt
+scala/target/
+scala/project/target/
+scala/project/project/
+scala/.bsp/
+scala/.metals/
+scala/.ammonite/
+scala/.idea/
+*.iml
+*.classpath
+*.project
+*.settings/
+metals.sbt
+
