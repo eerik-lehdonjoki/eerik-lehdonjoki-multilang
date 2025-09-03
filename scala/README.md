@@ -42,4 +42,3 @@ scala -cp classes users.Main top
 ## Notes
 - Pure standard library; no external dependencies.
 - The program resolves CSV path relatively (`../users.csv`). Run commands from inside `scala/` so relative path is correct.
-- Mirrors functionality of JavaScript, Python, and TypeScript versions.
