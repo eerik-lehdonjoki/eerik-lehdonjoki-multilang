@@ -4,11 +4,9 @@ import scala.io.Source
 import java.nio.file.{Paths, Path}
 import scala.util.Using
 
-/** Simple representation of a user row. All fields stored as Strings for parity with other languages */
 case class UserRecord(name: String, age: String, country: String)
 
 object Main:
-  // When running via `sbt run` inside the `scala/` directory, repo root is parent of this directory.
   private val CsvPath: Path = Paths.get("..", "users.csv")
 
   def loadUsers(path: Path): List[UserRecord] =
@@ -50,11 +48,11 @@ object Main:
   def getRegionForCountry(country: String): String =
     country match
       case "Finland" | "Germany" | "France" | "UK" => "Europe"
-      case "USA" | "Canada"                         => "North America"
-      case "Brazil"                                  => "South America"
-      case "India" | "Japan"                        => "Asia"
-      case "Australia"                               => "Oceania"
-      case _                                          => "Other"
+      case "USA" | "Canada"                        => "North America"
+      case "Brazil"                                => "South America"
+      case "India" | "Japan"                       => "Asia"
+      case "Australia"                             => "Oceania"
+      case _                                       => "Other"
 
   def usersByRegion(users: List[UserRecord]): Map[String, Int] =
     users.groupBy(u => getRegionForCountry(u.country)).view.mapValues(_.size).toMap
