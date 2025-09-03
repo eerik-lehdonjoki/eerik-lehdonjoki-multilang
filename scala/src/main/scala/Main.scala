@@ -85,16 +85,25 @@ object Main:
     if users.isEmpty then return
 
     val op = if args.nonEmpty then args(0) else "summary"
-    op match
-      case "summary" => doSummary(users)
-      case "filter"  => println(s"Filtered count: ${filterUsersByMinimumAge(users).size}")
-      case "group" =>
-        println("Users per country:")
-        logKeyValueLines(countUsersByCountry(users))
-      case "avg" => println(s"Average age: ${calculateUsersAverageAge(users)}")
-      case "top" => getTopNOldestUsers(users).foreach(u => println(s"${u.name} (${u.age})"))
-      case "region" =>
-        println("Users per region:")
-        logKeyValueLines(usersByRegion(users))
-      case other => println(s"Unknown operation '$other'. Use summary|filter|group|avg|top|region.")
+    if op == "summary" then
+      doSummary(users)
+      return
+    if op == "filter" then
+      println(s"Filtered count: ${filterUsersByMinimumAge(users).size}")
+      return
+    if op == "group" then
+      println("Users per country:")
+      logKeyValueLines(countUsersByCountry(users))
+      return
+    if op == "avg" then
+      println(s"Average age: ${calculateUsersAverageAge(users)}")
+      return
+    if op == "top" then
+      getTopNOldestUsers(users).foreach(u => println(s"${u.name} (${u.age})"))
+      return
+    if op == "region" then
+      println("Users per region:")
+      logKeyValueLines(usersByRegion(users))
+      return
+    println(s"Unknown operation '$op'. Use summary|filter|group|avg|top|region.")
 
